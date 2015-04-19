@@ -18,7 +18,6 @@
   ;; another bit of clojure code
   (list '+ 1 2 3)
   ;; ... that, when eval'ed, produces clojure code
-
   (eval (list '+ 1 2 3))
 
   (quote (+ 1 2 3))

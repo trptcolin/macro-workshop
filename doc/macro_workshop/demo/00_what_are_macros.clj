@@ -31,26 +31,25 @@
   ;; - all the use cases for macros
 
 
-
   ;; remember: a macro is a function that:
   ;; - runs at compile time
   ;; - takes code as input
   ;; - produces code as output, which is evaluated at runtime
 
+
   ;; initial approximation of the difference between macros &
   ;; functions: evaluation order
 
-  (when (= 1 2)
-    (println "math doesn't work")
-    42)
+  (clojure.repl/doc when)
 
-  (defn when-fn [test & args]
-    (if test
-      (last args)))
+  (defn when-fn [test then-expr]
+    (if test then-expr))
 
   (when-fn (= 1 2)
-    (println "math doesn't work")
-    42)
+    (println "math doesn't work"))
+
+  (when (= 1 2)
+    (println "math doesn't work"))
 
   ;; special forms!
   (if (= 1 2)
@@ -60,5 +59,4 @@
 
   ;; why do macros have this super-power?
   ;; why can they control evaluation order?
-
   )
