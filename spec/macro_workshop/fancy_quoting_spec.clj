@@ -24,7 +24,7 @@
     (it "generates a None when given 0 arguments"
       (should= {:type `fancy/None} (fancy/construct-maybe)))
 
-    (it "generates a None when given 0 arguments"
+    (it "generates a Some when given 1 argument"
       (should= {:type `fancy/Some
                 :value "hi"}
                (fancy/construct-maybe "hi")))))
