@@ -13,6 +13,12 @@ Sure, I know the real name is syntax-quote. But isn't "fancy-quote" more fun?
    for now. Use your new syntax-quoting knowledge to generate code in a concise
    way.
 
+   ```bash
+   lein spec -a spec/macro_workshop/fancy_quoting_spec.clj
+   ```
+
+   Just the first `describe` block for now! (If you go too far that's OK too.)
+
 3. Take a look at the source code for the `if-not` macro and convince yourself
    that you would have written it, were it not (a) already written, and (b)
    confusing for many programmers to read & maintain (see

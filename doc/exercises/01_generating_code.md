@@ -56,3 +56,6 @@
    exercise.  You totally shouldn't use macros for these examples in real
    life...  we'll see why soon enough.
 
+   ```bash
+   lein spec -a spec/macro_workshop/code_generation_2_spec.clj
+   ```

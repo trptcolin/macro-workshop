@@ -19,6 +19,10 @@
    let's put it together. There are some failing tests in
    `spec/macro_workshop/if_nonempty_let_spec.clj`. Make them pass.
 
+   ```bash
+   lein spec -a spec/macro_workshop/if_nonempty_let_spec.clj
+   ```
+
 4. Now that you have the happy path working for the macro in #3, let's provide
    some nice error messages for our users. There are some failing tests for you
    in `macro-workshop.user-friendliness-spec`.

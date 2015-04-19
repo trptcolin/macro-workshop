@@ -81,3 +81,7 @@
    and quoting (no need to look into the compiler source code for this!), make
    the tests pass in `spec/macro_workshop/secret_magic_spec.clj`.
 
+
+    ```bash
+    lein spec -a spec/macro_workshop/secret_magic_spec.clj
+    ```
