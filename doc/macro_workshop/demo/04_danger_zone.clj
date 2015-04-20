@@ -6,12 +6,14 @@
   (defmacro square [x]
     `(* ~x ~x))
 
-  (let [x 1]
-    (square 3))
+  (let [x 3]
+    (square x))
 
   (square 5)
 
   (square (do (println "hi") 5)) ;; why?
+
+  `(* (do (println "hi") 5) (do (println "hi") 5))
 
   ;; we can fix this by only including the original code once
   (defmacro square [x]
@@ -36,7 +38,7 @@
 
   ;; but that was silly. we can do much much better:
   (map #(square %) (range 5))
-  (map #(+ % %) (range 5))
+  (map #(* % %) (range 5))
 
   (map square (range 5))
   ;; why did that work?
@@ -64,6 +66,12 @@
 
   ;; so we had to write a macro in order to use the underlying macro.
   ;; this is common.
+
+
+  ;; does log-row *really* work?
+  (let [x ["column one" "column two" "column three"]]
+    (log-row x))
+
   )
 
 ;; exercise time! doc/exercises/04_danger_zone.md

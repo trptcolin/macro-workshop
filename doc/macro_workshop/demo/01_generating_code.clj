@@ -54,6 +54,17 @@
   ;; macroexpand-1 says: just run the macro function - don't `eval` the result
   (macroexpand-1 '(when false (+ 1 2) (/ 1 0)))
 
+
+  (macroexpand-1 '(when true '(+ 1 2)))
+  (macroexpand '(when true '(+ 1 2)))
+
+  (macroexpand-1 '(if-not true 1))
+  (macroexpand '(if-not true 1))
+
+  (when false
+    (+ 1 2)
+    (/ 1 0))
+
   ;; running just the macroexpander can be useful to look at the generated code
   ;; rather than evaluating it.
   (macroexpand-1 '(when false (+ 1 2) (/ 1 0)))
