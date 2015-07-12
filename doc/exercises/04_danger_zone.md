@@ -11,7 +11,7 @@
    got any multiple evaluation problems. Looking for an unquote in front of the
    same symbol in multiple places is usually a good clue.
 
-3. Why can't I take the value of a macro? Is it a Clojure compiler limitation?
+3. Why is it that we "Can't take value of a macro"? Is it a Clojure compiler limitation?
    Or something more fundamental?
 
 4. Isn't there a trick we can do to avoid using a macro to implement `log-row`?

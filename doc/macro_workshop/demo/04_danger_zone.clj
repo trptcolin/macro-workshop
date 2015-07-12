@@ -13,20 +13,20 @@
 
   (square (do (println "hi") 5)) ;; why?
 
-  `(* (do (println "hi") 5) (do (println "hi") 5))
+  (macroexpand-1 '(square (do (println "hi") 5)))
 
-  ;; we can fix this by only including the original code once
+  ;; we can fix this by only including the original code 1x in the output code
   (defmacro square [x]
     `(let [x# ~x]
        (* x# x#)))
 
   (square (do (println "hi") 5))
 
-  ;; say it with me: "the inputs to a macro are *code*"
+  ;; say it with me: "the arguments to a macro are *code*"
 
   (map square (range 5)) ;; aw man!
 
-  ;; if you're like me, you may have tried...
+  ;; if you're like me, you may have tried something like...
   (map (partial #'square) (range 5))
   ;; ^^ wha? ^^
 
@@ -37,12 +37,10 @@
   (map (comp eval (partial #'square {} {})) (range 5))
 
   ;; but that was silly. we can do much much better:
-  (map #(square %) (range 5))
-  (map #(* % %) (range 5))
-
-  (map square (range 5))
+  (map (fn [x] (square x)) (range 5))
   ;; why did that work?
 
+  (macroexpand-1 '(square x))
 
   ;; let's say we're working with a macro with variable arity:
   (defmacro log [& args]
@@ -68,7 +66,7 @@
   ;; this is common.
 
 
-  ;; does log-row *really* work?
+  ;; hmm, but does log-row *really* work?
   (let [x ["column one" "column two" "column three"]]
     (log-row x))
 

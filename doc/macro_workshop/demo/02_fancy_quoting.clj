@@ -24,15 +24,17 @@
 
   ;; you don't always get exceptions on code interpretation errors
   (do (in-ns 'macro-workshop.demo.01-generating-code)
-      (eval `(+ 3 4)))
+      (eval `(/ 12 4)))
 
   (do (in-ns 'macro-workshop.demo.01-generating-code)
-      (eval '(+ 3 4)))
+      (eval '(/ 12 4)))
   ;; ^^ why? ^^
 
   ;; syntax-quote encourages interpretation of generated code using the context
   ;; where it was written
 
+
+  ;; now, another usage for syntax-quote...
   ;; this is already kind of verbose
   (let [x 3]
     (list '+ 1 (list '* 2 x)))
@@ -65,13 +67,13 @@
 
   ;; notice that it's way easier to see what's going wrong when we look at the
   ;; code that's generated, not at the error messages from eval!!!
-  ;; the same thing applies for debugging macros: use `macroexpand-1`!
+  ;; the same thing applies for debugging macros (so use `macroexpand-1`!)
 
   ;; OK, so there's another tiny bit of syntax here:
   (let [xs (range 10)]
     `(+ ~@xs))
 
-  ;; but does it work?
+  ;; ...but does it work?
   (eval (let [xs (range 10)]
           `(+ ~@xs)))
   ;; ^^^ woohoo! ^^^
@@ -94,17 +96,18 @@
            (+ ~'x 2)))
 
   ;; wait wtf is ~' ?? let's break it down:
-  (let [the-symbol-x 'x]
-    `(list ~the-symbol-x))
+  `(+ ~(quote x) 2)
+  ;; ' ===> quote
 
-  `(list ~'x)
+  `(+ ~'x 2)
 
   `(let [~'x 1]
      (+ ~'x 2)))
 
-;; so we have ~ which gives us an escape hatch to do whatever we want, and we
-;; have ' which lets us have non-namespaced symbols. that gives us enough to
-;; generate bindings in a way that works well enough for now. soon we'll see
-;; some other contexts where ~' can cause problems.
+;; so we have ~, which gives us an escape hatch to insert whatever code we want
+;; inside a syntax-quote, and we have ', which lets us have non-namespaced
+;; symbols. that gives us enough to generate bindings in a way that works well
+;; enough for now. very soon, we'll see other contexts, where ~' can cause
+;; problems.
 
 ;; now for the next exercise set! doc/exercises/02_fancy_quoting.md

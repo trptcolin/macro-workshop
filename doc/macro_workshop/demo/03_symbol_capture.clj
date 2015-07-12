@@ -10,15 +10,15 @@
     `(fn [~'y] (+ ~x ~'y)))
 
   ;; there's only a very slight difference we know about, which affects people
-  ;; overriding clojure.core vars - and those people are on bad behavior
-  ;; anyway, right?
+  ;; overriding clojure.core vars - and those people are being naughty anyway,
+  ;; right?
   (macroexpand-1 '(make-adder-verbose 5))
   (macroexpand-1 '(make-adder 5))
 
   ;; this works as expected
   (assert (= 14 ((make-adder 4) 10)))
 
-  ;; ok, let's say 4 comes from somewhere else; we'll just bind a local and...
+  ;; ok, let's say 4 comes from somewhere else; we'll just extract a local:
   (assert (= 14
              (let [y 4]
                ((make-adder y) 10))))
@@ -68,7 +68,8 @@
   (= (first `(x#))
      (first `(x#)))
 
-  ;; same for being semantically separate syntax-quote expressions (with an unquote intervening)
+  ;; same for being lexically nested, but semantically separate syntax-quote
+  ;; expressions (with an unquote intervening)
   (apply = `(x# ~(first `(x#))))
 
   ;; if your macro has nested syntax-quotes (i really, really hope it doesn't

@@ -15,10 +15,12 @@
 
   ;; - to evaluate code in a different context
   ;; - for performance: to avoid running code at runtime
-  ;; - to eliminate nonessential code (building easy-to-use APIs)
+  ;; - to eliminate nonessential code (building easy-to-read APIs)
   ;; - to build new control flow structures
   ;; - to add new language features
 
+
+  ;; BUT: this workshop is more tactical than strategic
 
   ;; we'll dig deep into:
   ;; - how to write functions that generate code
@@ -42,6 +44,7 @@
 
   (clojure.repl/doc when)
 
+  ;; let's try a simple version, skipping the possibility of varargs
   (defn when-fn [test then-expr]
     (if test then-expr))
 
@@ -51,7 +54,7 @@
   (when (= 1 2)
     (println "math doesn't work"))
 
-  ;; special forms!
+  ;; (special forms can do this too!)
   (if (= 1 2)
     (println "math doesn't work")
     (println "math works"))

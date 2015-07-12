@@ -2,10 +2,14 @@
 
 ## Generating expressions with plain old functions
 
-1. In the REPL, type an expression that returns `(println "hi")` in the output.
-   To be clear, the code that you *type* shouldn't print "hi" to STDOUT, but if
-   you copy the return value and type *that* into the REPL too, that *should*
-   print "hi" to STDOUT.
+1. In the REPL, type an expression that returns `(println "hi")`.  To be clear,
+   the code that you *type* shouldn't print "hi" to STDOUT, but if you copy the
+   return value and type *that* into the REPL too, that *should* print "hi" to
+   STDOUT.
+
+   (hint: what does `quote` do?)
+
+   What is the type of the return value?
 
 
 2. Congratulations! You've just generated some code! Now let's do something
@@ -17,15 +21,14 @@
     ```
 
 
-   Now make the tests pass, by fixing the code in
-   `src/macro_workshop/code_generation.clj`. The auto-runner will re-run the
-   tests every time you save one of the two relevant files. I
+   Now make each test pass, by first removing the `(pending)` marker, and then
+   fixing the code in `src/macro_workshop/code_generation.clj`. The auto-runner
+   will re-run the tests every time you save one of the two relevant files. I
    like to keep one window open with the auto-runner, and one with my editor,
-   so that I can see both at once, but feel free to use whatever workflow you
-   prefer.
+   so that I can see both at once.
 
-   Whether things are passing or failing, feel very free to write
-   additional tests and/or use the REPL to make sure you understand why!
+   Whether things are passing or failing, feel very free to write additional
+   tests and/or use the REPL to make sure you understand why!
 
 
 3. Read the source code for `clojure.core/when`, and explain it [out loud!] to

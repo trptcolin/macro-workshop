@@ -33,24 +33,15 @@
 
    Try `lein run -m macro-workshop.aot-example --expand` as well!
 
-4. What are the implications of #1 for AOT-compiled projects? That is, what
-   characteristics should macros have in order to avoid bugs in AOT-compiled
-   code?
+4. What are the implications of the previous answer for AOT-compiled projects?
+   That is, what characteristics should macros have in order to avoid bugs in
+   AOT-compiled code?
 
 5. It's normally useful to think of macros as being completely gone at runtime.
    Does this mean your running program can't access macros? (hint: no) Name 3
    ways it can access/use macros. No judgment here: be as evil as you like!
 
-6. Why doesn't this throw an exception?
-
-   ```clojure
-   (def xs (map (fn [_] (/ 1 0)) (range 10000)))
-   ```
-
-  Be specific! Assume that a 3-word answer isn't explicit enough to convince
-  your listener/reader.
-
-7. We know that we can write expressions in the verb position that evaluate to
+6. We know that we can write expressions in the verb position that evaluate to
    functions. What happens if we put a macro expression in the verb position
    and try to make it expand to a special form symbol?
 
@@ -61,7 +52,7 @@
 
    What if we made it expand to a macro symbol instead of a special form?
 
-8. There are two rarely-used available bits of syntax in macros: `&form` and
+7. There are two rarely-used available bits of syntax in macros: `&form` and
    `&env`. Take a look at how they work:
 
     ```clojure
