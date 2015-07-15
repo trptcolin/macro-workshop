@@ -1,8 +1,8 @@
 # macro-workshop
 
-This workshop will be presented at Clojure/West 2015, and is concurrently
-open-sourced to help out folks who weren't able to attend the Clojure/West
-workshop but who still want to learn about macros.
+This workshop was originally presented at Clojure/West 2015, and was
+concurrently open-sourced to help out folks who weren't able to attend the
+workshop at a conference, but who still want to learn about macros.
 
 Please feel free to open an issue if you have any questions! It doesn't have to
 be a mistake in the materials, though I'd like to hear about any of those you
