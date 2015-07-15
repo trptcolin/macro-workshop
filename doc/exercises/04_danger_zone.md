@@ -15,7 +15,7 @@
    Or something more fundamental?
 
 4. Isn't there a trick we can do to avoid using a macro to implement `log-row`?
-   (still building on top of `log`)
+   (assuming you still need to build on top of `log`)
 
     ```clojure
     (defmacro log [& args]
@@ -24,6 +24,7 @@
     (log-row ["column one" "column two" "column three"])
     ```
 
-   Why or why not? Hint: could the fact that we have `eval` help?
+   How? (or, alternatively, why isn't it possible?) Hint: could the fact that
+   we have `eval` help?
 
 
