@@ -1,4 +1,5 @@
-(ns macro-workshop.demo.02-fancy-quoting)
+(ns macro-workshop.demo.02-fancy-quoting
+  (:require [clojure.string :as string]))
 
 (comment
 
@@ -21,6 +22,10 @@
   ;; 1. namespace qualification
   '(+ a b)
   `(+ a b)
+
+  `(/ 12 4)
+
+  `(string/join "," [1 2 3])
 
   ;; you don't always get exceptions on code interpretation errors
   (do (in-ns 'macro-workshop.demo.01-generating-code)
@@ -88,6 +93,10 @@
   ;; we'll see why soon, but you can't always count on `apply` to save you.
 
   ;; so you want to generate some bindings...
+  ;; the code we want to generate:
+  (let [x 1]
+    (+ x 2))
+
   (eval `(let [x 1]
            (+ x 2)))
 
@@ -107,7 +116,7 @@
 ;; so we have ~, which gives us an escape hatch to insert whatever code we want
 ;; inside a syntax-quote, and we have ', which lets us have non-namespaced
 ;; symbols. that gives us enough to generate bindings in a way that works well
-;; enough for now. very soon, we'll see other contexts, where ~' can cause
+;; enough for now. soon, we'll see other contexts where ~' can cause
 ;; problems.
 
 ;; now for the next exercise set! doc/exercises/02_fancy_quoting.md

@@ -8,7 +8,8 @@
   ;; a macro is [just] a function that:
   ;; - runs at compile time
   ;; - takes code as input
-  ;; - produces code as output, which is evaluated at runtime
+  ;; - produces code as output
+  ;; - and that code is evaluated at runtime
 
 
   ;; there are lots of reasons to use macros! a few examples:
@@ -42,7 +43,8 @@
   ;; initial approximation of the difference between macros &
   ;; functions: evaluation order
 
-  (clojure.repl/doc when)
+  (when (= 1 2)
+    (println "math doesn't work"))
 
   ;; let's try a simple version, skipping the possibility of varargs
   (defn when-fn [test then-expr]
@@ -51,10 +53,15 @@
   (when-fn (= 1 2)
     (println "math doesn't work"))
 
-  (when (= 1 2)
+  (defn when-fn' [test then-expr]
+    (println "top of when-fn")
+    (if test then-expr)
+    (println "bottom of when-fn"))
+
+  (when-fn' (= 1 2)
     (println "math doesn't work"))
 
-  ;; (special forms can do this too!)
+  ;; (special forms have this power too!)
   (if (= 1 2)
     (println "math doesn't work")
     (println "math works"))

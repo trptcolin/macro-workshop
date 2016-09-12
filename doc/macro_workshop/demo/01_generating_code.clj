@@ -5,7 +5,8 @@
   ;; a macro is [just] a function that:
   ;; - runs at compile time
   ;; - takes code as input
-  ;; - produces code as output, which is evaluated at runtime
+  ;; - produces code as output
+  ;; - and that code is evaluated at runtime
 
   ;; we can get almost *all* the macro skills we need without ever writing
   ;; `defmacro`. you'll see how trivial it is to go from code generation to
@@ -57,6 +58,7 @@
 
 
   ;; macroexpand-1 says: just run the macro function - don't `eval` the result
+  ;; it lets you see the output (code) from the macro function's execution
   (macroexpand-1 '(when false (+ 1 2) (throw (Exception. "oops"))))
 
   (macroexpand-1 '(when true '(+ 1 2)))

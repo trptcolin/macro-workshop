@@ -2,10 +2,10 @@
 
 ## Generating expressions with plain old functions
 
-1. In the REPL, type an expression that returns `(println "hi")`.  To be clear,
-   the code that you *type* shouldn't print "hi" to STDOUT, but if you copy the
-   return value and type *that* into the REPL too, that *should* print "hi" to
-   STDOUT.
+1. In the REPL, write an expression that will *return* the expression `(println
+   "hi")`.  To be clear, the code that you *type* shouldn't print "hi" to
+   STDOUT, but if you copy the return value and type *that* into the REPL too,
+   that *should* print "hi" to STDOUT.
 
    (hint: what does `quote` do?)
 
