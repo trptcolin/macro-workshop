@@ -1,7 +1,7 @@
 # Bonus Round
 
-1. In what situations is a quoted expression the same as that same textual
-   expression without the quote? A first example:
+1. In what situations is a quoted expression equal to that same
+   textual expression without the quote? A first example:
 
     ```clojure
     (= (quote 123) 123)

@@ -26,9 +26,21 @@
 
   (map square (range 5)) ;; aw man!
 
+  square
+
+  #'square
+  (type #'square)
+  (deref #'square)
+  @#'square
+
   ;; if you're like me, you may have tried something like...
-  (map (partial #'square) (range 5))
+  (map @#'square (range 5))
   ;; ^^ wha? ^^
+
+
+  ;; ignore the {} for now - you'll get there in the BONUS ROUND!!!
+  (#'square {} {} 5)
+  (eval (#'square {} {} 5))
 
   (map (partial #'square {} {}) (range 5))
 
@@ -41,6 +53,11 @@
   ;; why did that work?
 
   (macroexpand-1 '(square x))
+
+  ;; SOOO: macros aren't values! they are *kind* of functions, but you'll find
+  ;; when working with macros how important functions-as-values are to Clojure
+  ;; in particular and FP in general
+
 
   ;; let's say we're working with a macro with variable arity:
   (defmacro log [& args]
@@ -62,16 +79,15 @@
   (defmacro log-row [row]
     `(log ~@row)) ;; yep.
 
+  (log-row ["column one" "column two" "column three"])
+
   ;; so we had to write a macro in order to use the underlying macro.
   ;; this is common.
 
 
-  ;; hmm, but does log-row *really* work?
+  ;; but WAIT: but does log-row *really* work?!?
   (let [x ["column one" "column two" "column three"]]
     (log-row x))
 
   )
-
 ;; exercise time! doc/exercises/04_danger_zone.md
-
-

@@ -1,7 +1,7 @@
 # Symbol Capture
 
-1. Look back at each of your solutions so far where. Where is there potential
-   for symbol capture? Do you ever emit symbols that are neither
+1. Look back at each of your solutions so far. Where is there potential for
+   symbol capture? Do you ever emit symbols that are neither
    namespace-qualified nor gensyms? Take a close look and fix any problems you
    find.
 
