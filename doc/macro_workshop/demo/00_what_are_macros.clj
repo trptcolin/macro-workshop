@@ -14,18 +14,18 @@
 
   ;; there are lots of reasons to use macros! a few examples:
 
-  ;; - to evaluate code in a different context
-  ;; - for performance: to avoid running code at runtime
-  ;; - to eliminate nonessential code (building easy-to-read APIs)
-  ;; - to build new control flow structures
-  ;; - to add new language features
+  ;; - to evaluate code in a different context (bindings! guaranteed cleanup!)
+  ;; - for performance (the fastest code at runtime is no code!)
+  ;; - to eliminate nonessential code (easy-to-read APIs!)
+  ;; - to build new control flow structures (loops! delimited continuations!)
+  ;; - to add new language features (pattern matching! goroutines!)
 
 
   ;; BUT: this workshop is more tactical than strategic
 
-  ;; we'll dig deep into:
+  ;; so we'll dig deep into:
   ;; - how to write functions that generate code
-  ;; - how to write macros
+  ;; - how to do ^^^ concisely and clearly
   ;; - tricky issues to watch out for & how to avoid them
 
 
@@ -37,7 +37,8 @@
   ;; remember: a macro is a function that:
   ;; - runs at compile time
   ;; - takes code as input
-  ;; - produces code as output, which is evaluated at runtime
+  ;; - produces code as output
+  ;; - and that code is evaluated at runtime
 
 
   ;; initial approximation of the difference between macros &
@@ -59,6 +60,9 @@
     (println "bottom of when-fn"))
 
   (when-fn' (= 1 2)
+    (println "math doesn't work"))
+
+  (when (= 1 2)
     (println "math doesn't work"))
 
   ;; (special forms have this power too!)

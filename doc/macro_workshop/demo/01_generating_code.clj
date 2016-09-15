@@ -17,9 +17,8 @@
   (+ 1 2 3)
 
   ;; another bit of clojure code
+  ;; ... which, when eval'ed, produces clojure code
   (list '+ 1 2 3)
-  ;; ... that, when eval'ed, produces clojure code
-  (eval (list '+ 1 2 3))
 
   (quote (+ 1 2 3))
 
@@ -47,8 +46,7 @@
   ;; let's try this again...
   (eval '(+ 1 (+ x y) (* 3 4)))
 
-  ;; just in case we want to go back to the original state where x & y are
-  ;; undefined
+  ;; [just in case we want to go back to the state where x & y are undefined]
   (ns-unmap *ns* 'x)
   (ns-unmap *ns* 'y)
 
@@ -59,19 +57,17 @@
 
   ;; macroexpand-1 says: just run the macro function - don't `eval` the result
   ;; it lets you see the output (code) from the macro function's execution
-  (macroexpand-1 '(when false (+ 1 2) (throw (Exception. "oops"))))
+  (macroexpand-1 '(if-not false :oops))
+  (macroexpand-1 (macroexpand-1 '(if-not false :oops)))
 
-  (macroexpand-1 '(when true '(+ 1 2)))
-  (macroexpand '(when true '(+ 1 2)))
-
-  (macroexpand-1 '(if-not true 1))
-  (macroexpand '(if-not true 1))
+  ;; just keep expanding until the "verb" isn't a macro
+  (macroexpand '(if-not false :oops))
 
   ;; running just the macroexpander can be useful to look at the generated code
-  ;; rather than evaluating it.
-  (macroexpand-1 '(when false (+ 1 2) (throw (Exception. "oops"))))
-
-  (eval (macroexpand-1 '(when false (+ 1 2) (throw (Exception. "oops"))))))
+  ;; vs. expanding and evaluating it all at once
+  (if-not false :oops)
+  (macroexpand '(if-not false :oops))
+  )
 
 ;; on to the first exercise set: doc/exercises/01_generating_code.md
 ;; have fun!

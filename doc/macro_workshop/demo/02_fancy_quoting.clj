@@ -23,7 +23,7 @@
   '(+ a b)
   `(+ a b)
 
-  `(/ 12 4)
+  `(* 12 4)
 
   `(string/join "," [1 2 3])
 
@@ -106,7 +106,7 @@
 
   ;; wait wtf is ~' ?? let's break it down:
   `(+ ~(quote x) 2)
-  ;; ' ===> quote
+  ;; ' <===> quote
 
   `(+ ~'x 2)
 
